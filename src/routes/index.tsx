@@ -251,7 +251,7 @@ function Index() {
   src={HERO_IMG}
   alt="Isabela Bertolli"
   className={`absolute inset-0 w-full h-full object-cover ${
-    isLandscape ? "object-[50%_15%]" : "object-[50%_1%]"
+    isLandscape ? "object-[50%_30%]" : "object-[50%_1%]"
   }`}
 />
         <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/30 to-transparent" />
