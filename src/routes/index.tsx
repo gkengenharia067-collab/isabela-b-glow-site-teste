@@ -245,14 +245,18 @@ function Index() {
         )}
       </header>
 
-            {/* HERO - CORRIGIDO DEFINITIVO */}
+                  {/* HERO - SOLUÇÃO DEFINITIVA */}
       <section
         id="inicio"
         className="relative min-h-[60vh] md:min-h-screen flex items-end justify-center overflow-hidden"
         style={{
           backgroundImage: `url(${HERO_IMG})`,
           backgroundSize: 'cover',
-          backgroundPosition: isLandscape ? 'center 40%' : 'center 10%',
+          backgroundPosition: window.innerWidth > 1024 
+            ? '0% 0%' /* Desktop: alinha no topo esquerdo (mostra Isabela e cabeça) */
+            : isLandscape 
+            ? 'center 40%' /* Paisagem: desce para mostrar mais */ 
+            : 'center 10%', /* Retrato: já funcionou */
           backgroundRepeat: 'no-repeat',
         }}
       >
