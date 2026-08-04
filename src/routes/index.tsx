@@ -245,19 +245,23 @@ function Index() {
         )}
       </header>
 
-                  {/* HERO - SOLUÇÃO DEFINITIVA */}
+                {/* HERO - CORRIGIDO */}
       <section
         id="inicio"
         className="relative min-h-[60vh] md:min-h-screen flex items-end justify-center overflow-hidden"
         style={{
           backgroundImage: `url(${HERO_IMG})`,
-          backgroundSize: 'cover',
-          backgroundPosition: window.innerWidth > 1024 
-            ? '0% 0%' /* Desktop: alinha no topo esquerdo (mostra Isabela e cabeça) */
-            : isLandscape 
-            ? 'center 40%' /* Paisagem: desce para mostrar mais */ 
-            : 'center 10%', /* Retrato: já funcionou */
+          backgroundSize: window.innerWidth > window.innerHeight && window.innerWidth < 1024 
+            ? 'contain' /* Paisagem (celular deitado): foto inteira */
+            : 'cover',   /* Desktop e retrato: preenche a tela */
+          backgroundPosition: (() => {
+            if (window.innerWidth > window.innerHeight && window.innerWidth < 1024) {
+              return 'center center'; /* Paisagem: centraliza a foto inteira */
+            }
+            return 'center 10%'; /* Desktop e retrato: posição que já funcionou */
+          })(),
           backgroundRepeat: 'no-repeat',
+          backgroundColor: '#1A1A1A',
         }}
       >
         <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/30 to-transparent" />
