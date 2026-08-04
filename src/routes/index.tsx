@@ -242,7 +242,7 @@ function Index() {
         className="relative flex items-end justify-center overflow-hidden
                    min-h-[60vh] md:min-h-screen
                    max-lg:landscape:min-h-[100vh]
-                   bg-no-repeat bg-cover bg-[center_10%]
+                   bg-no-repeat bg-cover bg-[center_1%]
                    max-lg:landscape:bg-contain max-lg:landscape:bg-center
                    bg-[#1A1A1A]"
         style={{ backgroundImage: `url(${HERO_IMG})` }}
