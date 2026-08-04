@@ -237,46 +237,29 @@ function Index() {
       </header>
 
             {/* HERO - DESKTOP: cover+center1% | MOBILE: fundo borrado + imagem nítida */}
+            {/* HERO - CLAUDE: mobile com blur+contain, desktop cover+center1% */}
       <section
         id="inicio"
-        className="relative flex items-end justify-center overflow-hidden
-                   min-h-[60vh] md:min-h-screen"
+        className="relative min-h-[60vh] md:min-h-screen flex items-end justify-center overflow-hidden"
       >
-        {/* DESKTOP (>= 1024px): cover com center 1% */}
+        {/* Camada 1: fundo borrado — só aparece abaixo do lg */}
         <div
-          className="hidden lg:block absolute inset-0"
+          className="absolute inset-0 scale-110 blur-2xl brightness-75 lg:hidden"
           style={{
             backgroundImage: `url(${HERO_IMG})`,
             backgroundSize: "cover",
-            backgroundPosition: "center 1%",
-            backgroundRepeat: "no-repeat",
+            backgroundPosition: "center",
           }}
         />
 
-        {/* MOBILE (< 1024px): fundo borrado + imagem nítida (retrato e paisagem) */}
-        <div className="lg:hidden absolute inset-0">
-          {/* Camada borrada */}
-          <div
-            className="absolute inset-0 scale-110 blur-2xl brightness-75"
-            style={{
-              backgroundImage: `url(${HERO_IMG})`,
-              backgroundSize: "cover",
-              backgroundPosition: "center",
-            }}
-          />
-          {/* Camada nítida */}
-          <div
-            className="absolute inset-0"
-            style={{
-              backgroundImage: `url(${HERO_IMG})`,
-              backgroundSize: "contain",
-              backgroundPosition: "center",
-              backgroundRepeat: "no-repeat",
-            }}
-          />
-        </div>
+        {/* Camada 2: imagem principal — contain no mobile, cover no desktop */}
+        <div
+          className="absolute inset-0 bg-no-repeat
+                     bg-contain bg-center
+                     lg:bg-cover lg:bg-[center_1%]"
+          style={{ backgroundImage: `url(${HERO_IMG})` }}
+        />
 
-        {/* Overlay e botão */}
         <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/30 to-transparent" />
         <div className="relative z-10 w-full max-w-4xl mx-auto px-6 pb-8 md:pb-16 text-center">
           <a
