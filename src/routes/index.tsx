@@ -132,15 +132,6 @@ function Index() {
   const [activeTab, setActiveTab] = useState(TABS[0].id);
   const [showTop, setShowTop] = useState(false);
   const [form, setForm] = useState({ nome: "", email: "", mensagem: "" });
-  const [isLandscape, setIsLandscape] = useState(window.innerWidth > window.innerHeight);
-
-  useEffect(() => {
-    const handleResize = () => {
-      setIsLandscape(window.innerWidth > window.innerHeight);
-    };
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
-  }, []);
 
   useEffect(() => {
     const onScroll = () => {
@@ -245,24 +236,16 @@ function Index() {
         )}
       </header>
 
-                {/* HERO - CORRIGIDO */}
+      {/* HERO - CORRIGIDO (Tailwind com landscape) */}
       <section
         id="inicio"
-        className="relative min-h-[60vh] md:min-h-screen flex items-end justify-center overflow-hidden"
-        style={{
-          backgroundImage: `url(${HERO_IMG})`,
-          backgroundSize: window.innerWidth > window.innerHeight && window.innerWidth < 1024 
-            ? 'contain' /* Paisagem (celular deitado): foto inteira */
-            : 'cover',   /* Desktop e retrato: preenche a tela */
-          backgroundPosition: (() => {
-            if (window.innerWidth > window.innerHeight && window.innerWidth < 1024) {
-              return 'center center'; /* Paisagem: centraliza a foto inteira */
-            }
-            return 'center 10%'; /* Desktop e retrato: posição que já funcionou */
-          })(),
-          backgroundRepeat: 'no-repeat',
-          backgroundColor: '#1A1A1A',
-        }}
+        className="relative flex items-end justify-center overflow-hidden
+                   min-h-[60vh] md:min-h-screen
+                   max-lg:landscape:min-h-[100vh]
+                   bg-no-repeat bg-cover bg-[center_10%]
+                   max-lg:landscape:bg-contain max-lg:landscape:bg-center
+                   bg-[#1A1A1A]"
+        style={{ backgroundImage: `url(${HERO_IMG})` }}
       >
         <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/30 to-transparent" />
         <div className="relative z-10 w-full max-w-4xl mx-auto px-6 pb-8 md:pb-16 text-center">
