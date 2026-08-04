@@ -241,7 +241,7 @@ function Index() {
         <img
           src={HERO_IMG}
           alt="Isabela Bertolli"
-          className="absolute inset-0 w-full h-full object-cover object-top"
+          className="absolute inset-0 w-full h-full object-cover object-[50%_1%]"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/30 to-transparent" />
         <div className="relative z-10 w-full max-w-4xl mx-auto px-6 pb-8 md:pb-16 text-center">
