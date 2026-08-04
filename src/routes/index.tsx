@@ -236,17 +236,47 @@ function Index() {
         )}
       </header>
 
-      {/* HERO - CORRIGIDO (Tailwind com landscape) */}
+            {/* HERO - DESKTOP: cover+center1% | MOBILE: fundo borrado + imagem nítida */}
       <section
         id="inicio"
         className="relative flex items-end justify-center overflow-hidden
-                   min-h-[60vh] md:min-h-screen
-                   max-lg:landscape:min-h-[100vh]
-                   bg-no-repeat bg-cover bg-[center_1%]
-                   max-lg:landscape:bg-contain max-lg:landscape:bg-center
-                   bg-[#1A1A1A]"
-        style={{ backgroundImage: `url(${HERO_IMG})` }}
+                   min-h-[60vh] md:min-h-screen"
       >
+        {/* DESKTOP (>= 1024px): cover com center 1% */}
+        <div
+          className="hidden lg:block absolute inset-0"
+          style={{
+            backgroundImage: `url(${HERO_IMG})`,
+            backgroundSize: "cover",
+            backgroundPosition: "center 1%",
+            backgroundRepeat: "no-repeat",
+          }}
+        />
+
+        {/* MOBILE (< 1024px): fundo borrado + imagem nítida (retrato e paisagem) */}
+        <div className="lg:hidden absolute inset-0">
+          {/* Camada borrada */}
+          <div
+            className="absolute inset-0 scale-110 blur-2xl brightness-75"
+            style={{
+              backgroundImage: `url(${HERO_IMG})`,
+              backgroundSize: "cover",
+              backgroundPosition: "center",
+            }}
+          />
+          {/* Camada nítida */}
+          <div
+            className="absolute inset-0"
+            style={{
+              backgroundImage: `url(${HERO_IMG})`,
+              backgroundSize: "contain",
+              backgroundPosition: "center",
+              backgroundRepeat: "no-repeat",
+            }}
+          />
+        </div>
+
+        {/* Overlay e botão */}
         <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/30 to-transparent" />
         <div className="relative z-10 w-full max-w-4xl mx-auto px-6 pb-8 md:pb-16 text-center">
           <a
