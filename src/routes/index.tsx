@@ -245,15 +245,17 @@ function Index() {
         )}
       </header>
 
-      {/* HERO - CORRIGIDO */}
-      <section id="inicio" className="relative min-h-[60vh] md:min-h-screen flex items-end justify-center overflow-hidden">
-        <img
-  src={HERO_IMG}
-  alt="Isabela Bertolli"
-  className={`absolute inset-0 w-full h-full object-cover ${
-    isLandscape ? "object-[50%_30%]" : "object-[50%_1%]"
-  }`}
-/>
+            {/* HERO - CORRIGIDO DEFINITIVO */}
+      <section
+        id="inicio"
+        className="relative min-h-[60vh] md:min-h-screen flex items-end justify-center overflow-hidden"
+        style={{
+          backgroundImage: `url(${HERO_IMG})`,
+          backgroundSize: 'cover',
+          backgroundPosition: isLandscape ? 'center 40%' : 'center 10%',
+          backgroundRepeat: 'no-repeat',
+        }}
+      >
         <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/30 to-transparent" />
         <div className="relative z-10 w-full max-w-4xl mx-auto px-6 pb-8 md:pb-16 text-center">
           <a
